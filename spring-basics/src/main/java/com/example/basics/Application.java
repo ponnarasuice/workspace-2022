@@ -12,6 +12,7 @@ public class Application {
   public static void main(String args[]) {
     // usually we create objects by new operator. spring takes care of that and stores it in context
     // need to include the spring-context jar, spring-core jar, spring beans
+    
 
 
     // spring creates objects based on the configurations in xml or annotations
