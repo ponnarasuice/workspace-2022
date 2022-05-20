@@ -23,7 +23,7 @@ public class Application {
 //    Vehicle truck = (Vehicle) context.getBean("createTruckCons", "heavyvehicle");
 //    truck.rideType();
     Vehicle car = context.getBean(Car.class);
-car.rideType();
+    car.rideType();
 
   }
 }
