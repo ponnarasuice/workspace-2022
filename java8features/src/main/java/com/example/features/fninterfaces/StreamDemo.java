@@ -1,10 +1,6 @@
 package com.example.features.fninterfaces;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -46,13 +42,15 @@ public class StreamDemo {
     System.out.println(list.stream().filter(v->v.getScore()>100).count());
     // distinct age of all players
     // by default 2 objs equals method is called************* imp interview questions
-    System.out.println(list.stream().collect(Collectors.toMap(Player::getAge, Function.identity(), (p1,p2)->p2)).values());
+    System.out.println(list.stream().collect(Collectors.toMap(Player::getAge,
+            Function.identity(), (p1,p2)->p2)).values());
 
     // 2nd best batsmen score
     System.out.println("2nd best batsmen");
     System.out.println(list.stream().sorted(Comparator.comparingInt(Player::getScore)).collect(Collectors.toList()));
     System.out.println(list.stream().sorted((p1,p2)->Integer.compare(p1.getScore(), p2.getScore())).collect(Collectors.toList()));
-    System.out.println(list.stream().sorted(Comparator.comparingInt(Player::getScore).reversed()).limit(2).skip(1).collect(Collectors.toList()));
+    System.out.println(list.stream().sorted(Comparator.comparingInt(Player::getScore)
+            .reversed()).limit(2).skip(1).collect(Collectors.toList()));
 
     // max aged batsman
     System.out.println("max aged person");
@@ -92,5 +90,18 @@ public class StreamDemo {
     System.out.println(samp);
 
     var statistisc = integerList.stream().mapToInt(v->v).summaryStatistics();
+    statistisc.getAverage();
+    statistisc.getCount();
+
+//    count by age
+    Map map_count = list.stream().collect(Collectors
+            .groupingBy(Player::getAge, Collectors.counting()));
+
+    map_count.forEach((k,v)-> System.out.println("age:"+k + " count:"+v));
+
+    map_count.entrySet().stream().forEach(v-> System.out.println(v));
+
+    map_count.values().stream().forEach(v-> System.out.println(v));
+
   }
 }

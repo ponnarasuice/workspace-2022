@@ -1,0 +1,1 @@
+### create a interface which connects 2 unrelated objects

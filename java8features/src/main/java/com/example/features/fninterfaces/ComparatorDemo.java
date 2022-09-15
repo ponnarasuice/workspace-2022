@@ -46,5 +46,16 @@ public class ComparatorDemo {
 
     System.out.println(players);
 
+    var list = Arrays.asList("mat", "apple");
+    Comparator alsort = Comparator.naturalOrder();
+    Comparator stsort = (s1, s2 ) -> {
+      if (s1.equals(s2)){
+        return 0;
+      }
+      return 1;
+    };
+
+    list.sort(alsort);
+
   }
 }
